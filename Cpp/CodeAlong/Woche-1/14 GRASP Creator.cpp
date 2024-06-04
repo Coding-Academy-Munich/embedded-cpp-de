@@ -80,6 +80,47 @@
 
 
 // %% [markdown]
+// ```cpp
+// class World {
+// public:
+//     World(const std::vector<LocationData>& locationData,
+//         std::string initialLocationName);
+//
+//     explicit World(const std::vector<data::LocationData>& locationData);
+//
+//     const std::unordered_map<std::string, Location>& GetLocations() const;
+//     const std::string& GetInitialLocationName() const;
+//
+// private:
+//     std::unordered_map<std::string, Location> locations;
+//     std::string initialLocationName;
+// };
+// ```
+
+// %% [markdown]
+// ```cpp
+// World::World(const std::vector<LocationData>& locationData, std::string initialLocationName)
+//     : locations {}
+//     , initialLocationName { std::move(initialLocationName) }
+// {
+//     locations.reserve(locationData.size());
+//     for (const auto& location : locationData) {
+//         locations.emplace(location.name, location);
+//     }
+// }
+// ```
+
+// %%
+
+
+// %% [markdown]
 //
 // - Wir können die `main()` Methode anpassen, um die `World`-Klasse zu
 //   verwenden.
+
+// %% [markdown]
+// ```cpp
+// using namespace adventure_sk;
+// ```
+
+// %%

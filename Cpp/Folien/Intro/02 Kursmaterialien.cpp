@@ -16,12 +16,13 @@
 //
 // # Kursmaterialien
 //
-// - Auf den Kurs-Seiten finden Sie für jede Woche ein ZIP-Archiv mit den Materialien
+// - Auf der GitHub-Seite des Kurses finden Sie die Kursmaterialien
 // - Darin befinden sich mehrere Ordner:
 //   - `Notebooks` enthält die interaktiven Notebooks
 //   - `Html` enthält statische Versionen der Notebooks
 //   - `Cpp` enthält die Notebooks als C++-Dateien, um es einfach zu machen, Code-Schnipsel zu kopieren
-//   - `Code` enthält CMake-Projekte mit Code für Beispiele und größere Workshops
+//   - `code` enthält CMake-Projekte mit Code für Beispiele und größere Workshops
+// - Sie können von dort auch ein ZIP-Archiv mit allen Materialien herunterladen
 
 // %% [markdown]
 //
@@ -43,8 +44,7 @@
 // ### Zu jedem Notebook korrespondiert
 //
 // - Ein Video, in dem die eigentlichen Inhalte diskutiert werden
-// - Potentiell weitere Workshop-Videos, in denen Lösungen zu Workshops
-//   diskutiert werden
+// - Potentiell weitere Workshop-Videos, in denen Sie zusätzliche Workshops finden
 
 // %% [markdown]
 //

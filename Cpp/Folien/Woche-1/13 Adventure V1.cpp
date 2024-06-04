@@ -52,24 +52,3 @@
 // ## Implementierung
 //
 // - Ordner: `code/starter_kits/adventure_sk`
-
-// %% [markdown]
-//
-// - Jetzt kommen wir zur ersten Entscheidung, wo uns die GRASP Patterns helfen
-//   können.
-// - Wer ist verantwortlich für die Erzeugung der `Location`-Instanzen?
-// - Wir haben mehrere Möglichkeiten:
-//   - Die `Game`-Klasse könnte die `Location`-Instanzen erzeugen und an die
-//     `World`-Klasse übergeben
-//   - Eine `LocationFactory`-Klasse, die auf das Erzeugen von `Locations`
-//     spezialisiert ist, könnte die `Location`-Instanzen erzeugen und an die
-//     `World`-Klasse übergeben
-//   - Irgend eine andere Klasse könnte die `Location`-Instanzen erzeugen und an
-//     die `World`-Klasse übergeben
-//   - Die `World`-Klasse könnte die `Location`-Instanzen selber erzeugen
-// - Das `Creator` Pattern gibt hier eine Antwort.
-// - Aber nachdem das Video ohnehin schon lang genug ist, machen wir eine Pause
-//   und kommen im nächsten Video darauf zurück.
-// - Ich bedanke mich für Ihre Aufmerksamkeit und freue mich, Sie im nächsten
-//   Video wiederzusehen.
-// - Bis dann und alles Gute!

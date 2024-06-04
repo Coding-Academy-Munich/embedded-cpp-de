@@ -13192,6 +13192,54 @@ wenn eine oder mehrere der folgenden Bedingungen zutreffen:</p>
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=fc665e35019f9a17"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">World</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">World</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">LocationData</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">locationData</span><span class="p">,</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">initialLocationName</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">explicit</span><span class="w"> </span><span class="n">World</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">data</span><span class="o">::</span><span class="n">LocationData</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">locationData</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">Location</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">GetLocations</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="nf">GetInitialLocationName</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">Location</span><span class="o">&gt;</span><span class="w"> </span><span class="n">locations</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">initialLocationName</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=b22e48ad8edd0658"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="n">World</span><span class="o">::</span><span class="n">World</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">LocationData</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">locationData</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">initialLocationName</span><span class="p">)</span>
+<span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="n">locations</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="p">,</span><span class="w"> </span><span class="n">initialLocationName</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">initialLocationName</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">locations</span><span class="p">.</span><span class="n">reserve</span><span class="p">(</span><span class="n">locationData</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">location</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">locationData</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">locations</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="n">location</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">location</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=d03b83f92b093ded">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-c++"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=831c54911b78adf9"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13199,6 +13247,25 @@ wenn eine oder mehrere der folgenden Bedingungen zutreffen:</p>
 <li>Wir können die <code>main()</code> Methode anpassen, um die <code>World</code>-Klasse zu
 verwenden.</li>
 </ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=7d5c51dbf03782d6"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">adventure_sk</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=839bda6bc3b46c09">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-c++"><pre><span></span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>

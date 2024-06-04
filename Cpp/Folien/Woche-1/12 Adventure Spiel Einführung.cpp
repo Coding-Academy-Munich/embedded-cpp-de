@@ -16,11 +16,11 @@
 //
 // # Beispiel: Adventure-Game
 //
-// - Der Spieler kontrolliert eine Spielfigur
-// - Die Figur kann sich durch eine Welt bewegen, die aus miteinander
+// - Der Spieler kontrolliert eine Spielfigur,
+// - Die Spielfigur kann sich durch eine Welt bewegen kann, die aus miteinander
 //   verbundenen Orten besteht
-// - An manchen Orten sind Objekte zu finden, mit denen der Spieler interagieren
-//   kann, z.B. Behälter mit Beute, usw.
+// - In manchen Räumen sind Objekte zu finden, mit denen der Spieler
+//   interagieren kann, z.B. Behälter mit Beute, usw.
 // - In der Welt gibt es vom Computer kontrolliere Figuren (NPCs)
 // - Der Spieler kann mit NPCs interagieren (z.B. reden, kämpfen, handeln)
 
