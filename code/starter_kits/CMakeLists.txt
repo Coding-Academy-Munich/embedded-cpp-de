@@ -8,6 +8,8 @@ set(STARTER_KITS
         invoice_sk
         library_sk
         prime_factors_sk
+        recipes_sk
+        salaries_sk
         simple_calculator_sk
         virtual_university_sk
 )

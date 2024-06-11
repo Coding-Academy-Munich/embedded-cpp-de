@@ -15,6 +15,8 @@ set(COMPLETED_PROJECTS
         prime_factors
         raii
         range_examples
+        recipes
+        salaries
         shared_memory
         simple_calculator
         simple_examples
