@@ -1,20 +1,25 @@
-// Copyright (c) 2023 Dr. Matthias Hölzl. All rights reserved.
+// Copyright (c) 2023-2024 Dr. Matthias Hölzl. All rights reserved.
 
 #include "WorldFactory.h"
 
-namespace adventure::v3c {
+namespace adventure::v3c
+{
 
 World WorldFactory::create(
     const std::vector<data::LocationData>& locationDataVector,
-    const std::string& initialLocationName)
+    const std::string& initialLocationName
+)
 {
-    World world {initialLocationName};
+    World world{initialLocationName};
     world.locations.reserve(locationDataVector.size());
-    for (const auto& locationData : locationDataVector) {
+    for (const auto& locationData : locationDataVector)
+    {
         world.locations.emplace(locationData.name, locationData);
     }
-    for (const auto& locationData : locationDataVector) {
-        for (const auto& [direction, target] : locationData.connections) {
+    for (const auto& locationData : locationDataVector)
+    {
+        for (const auto& [direction, target] : locationData.connections)
+        {
             world.GetLocation(locationData.name)
                 .SetConnectedLocation(direction, world.GetLocation(target));
         }
@@ -26,4 +31,4 @@ World WorldFactory::create(const std::vector<data::LocationData>& locationDataVe
 {
     return create(locationDataVector, locationDataVector[0].name);
 }
-}
+} // namespace adventure::v3c

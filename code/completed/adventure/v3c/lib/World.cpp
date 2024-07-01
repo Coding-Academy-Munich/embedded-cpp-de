@@ -1,16 +1,15 @@
-// Copyright (c) 2023 Dr. Matthias Hölzl. All rights reserved.
+// Copyright (c) 2023-2024 Dr. Matthias Hölzl. All rights reserved.
 
 #include "World.h"
 
 #include <utility>
 
-namespace adventure::v3c {
+namespace adventure::v3c
+{
 
 World::World(std::string initialLocationName)
-    : locations {}
-    , initialLocationName {std::move(initialLocationName)}
-{
-}
+    : locations{}, initialLocationName{std::move(initialLocationName)}
+{}
 
 const std::unordered_map<std::string, Location>& World::GetLocations() const
 {
@@ -29,8 +28,9 @@ std::ostream& operator<<(std::ostream& os, const World& world)
 {
     os << "World\n"
        << "  locations: [";
-    std::string separator {};
-    for (const auto& [name, location] : world.GetLocations()) {
+    std::string separator{};
+    for (const auto& [name, location] : world.GetLocations())
+    {
         os << separator << name;
         separator = ", ";
     }
@@ -38,4 +38,4 @@ std::ostream& operator<<(std::ostream& os, const World& world)
        << "  initial location: " << world.GetInitialLocationName();
     return os;
 }
-}
+} // namespace adventure::v3c

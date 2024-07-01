@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Dr. Matthias Hölzl. All rights reserved.
+// Copyright (c) 2023-2024 Dr. Matthias Hölzl. All rights reserved.
 
 #pragma once
 #ifndef COMPLETED_ADVENTURE_V3C_WORLD_H
@@ -9,9 +9,11 @@
 #include <string>
 #include <unordered_map>
 
-namespace adventure::v3c {
+namespace adventure::v3c
+{
 
-class World {
+class World
+{
 public:
     World(const World&) = delete;
     World(World&&) noexcept = default;

@@ -1,6 +1,7 @@
 set(COMPLETED_PROJECTS
         adventure
         bmi
+        builder
         catch2_intro
         cpp_patterns
         etl_examples

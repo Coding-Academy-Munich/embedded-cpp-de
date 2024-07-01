@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Dr. Matthias Hölzl. All rights reserved.
+// Copyright (c) 2023-2024 Dr. Matthias Hölzl. All rights reserved.
 
 #pragma once
 #ifndef COMPLETED_ADVENTURE_V3B_WORLD_H
@@ -9,14 +9,18 @@
 #include <string>
 #include <unordered_map>
 
-namespace adventure::v3b {
+namespace adventure::v3b
+{
 
-class World {
+class World
+{
 public:
-    World(const std::vector<data::LocationData>& locationDataVector,
-        std::string initialLocationName);
-
+    World(
+        const std::vector<data::LocationData>& locationDataVector,
+        std::string initialLocationName
+    );
     explicit World(const std::vector<data::LocationData>& locationDataVector);
+
     World(const World&) = delete;
     World(World&&) noexcept = default;
     World& operator=(const World&) = delete;
