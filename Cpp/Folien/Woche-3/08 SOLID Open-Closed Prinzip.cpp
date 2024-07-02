@@ -295,7 +295,7 @@ class DeviceV0
 public:
     DeviceV0(DeviceType type) : type_(type) {}
 
-    std::string Control() const
+    std::string Control()
     {
         switch (type_) {
         case DeviceType::Light: return "Turning light on/off.";
@@ -326,9 +326,9 @@ std::vector<DeviceV0> devicesOriginal = {
     DeviceV0{DeviceType::Light}, DeviceV0{DeviceType::Thermostat}, DeviceV0{DeviceType::SecurityCamera}};
 
 // %%
-void ManageDevices(const std::vector<DeviceV0>& devices)
+void ManageDevices(std::vector<DeviceV0>& devices)
 {
-    for (const DeviceV0& device : devices) {
+    for (DeviceV0& device : devices) {
         std::cout << device.Control() << " " << device.GetStatus() << "\n";
     }
 }
@@ -355,7 +355,7 @@ public:
     Device() = default;
     virtual ~Device() = default;
 
-    virtual std::string Control() const = 0;
+    virtual std::string Control() = 0;
     virtual std::string GetStatus() const = 0;
 };
 
@@ -363,7 +363,7 @@ public:
 class Light : public Device
 {
 public:
-    std::string Control() const override { return "Turning light on/off."; }
+    std::string Control() override { return "Turning light on/off."; }
     std::string GetStatus() const override { return "Light is on/off."; }
 };
 
@@ -371,7 +371,7 @@ public:
 class Thermostat : public Device
 {
 public:
-    std::string Control() const override { return "Adjusting temperature."; }
+    std::string Control() override { return "Adjusting temperature."; }
     std::string GetStatus() const override { return "Current temperature: 22°C."; }
 };
 
@@ -379,7 +379,7 @@ public:
 class SecurityCamera : public Device
 {
 public:
-    std::string Control() const override { return "Activating motion detection."; }
+    std::string Control() override { return "Activating motion detection."; }
     std::string GetStatus() const override { return "Camera is active/inactive."; }
 };
 
@@ -387,7 +387,7 @@ public:
 class SmartLock : public Device
 {
 public:
-    std::string Control() const override { return "Locking/Unlocking door."; }
+    std::string Control() override { return "Locking/Unlocking door."; }
     std::string GetStatus() const override { return "Door is locked/unlocked."; }
 };
 
@@ -398,8 +398,8 @@ devicesRefactored.push_back(std::make_unique<Thermostat>());
 devicesRefactored.push_back(std::make_unique<SecurityCamera>());
 
 // %%
-void ManageDevices(const std::vector<std::unique_ptr<Device>>& devices) {
-    for (const auto& device : devices) {
+void ManageDevices(std::vector<std::unique_ptr<Device>>& devices) {
+    for (auto& device : devices) {
         std::cout << device->Control() << " " << device->GetStatus() << "\n";
     }
 }

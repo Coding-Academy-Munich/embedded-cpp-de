@@ -295,7 +295,7 @@ class DeviceV0
 public:
     DeviceV0(DeviceType type) : type_(type) {}
 
-    std::string Control() const
+    std::string Control()
     {
         switch (type_) {
         case DeviceType::Light: return "Turning light on/off.";
@@ -326,9 +326,9 @@ std::vector<DeviceV0> devicesOriginal = {
     DeviceV0{DeviceType::Light}, DeviceV0{DeviceType::Thermostat}, DeviceV0{DeviceType::SecurityCamera}};
 
 // %%
-void ManageDevices(const std::vector<DeviceV0>& devices)
+void ManageDevices(std::vector<DeviceV0>& devices)
 {
-    for (const DeviceV0& device : devices) {
+    for (DeviceV0& device : devices) {
         std::cout << device.Control() << " " << device.GetStatus() << "\n";
     }
 }
