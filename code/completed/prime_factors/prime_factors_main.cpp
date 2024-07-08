@@ -5,6 +5,8 @@
 
 #include "prime_factors.h"
 
+using namespace prime_factors;
+
 int main(int argc, char** argv)
 {
     const int number_to_factor{argc >= 2 ? std::stoi(argv[1]) : 100};

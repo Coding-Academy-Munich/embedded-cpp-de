@@ -10,6 +10,7 @@
 #include <vector>
 
 using namespace std::string_literals;
+using namespace prime_factors;
 
 TEST_CASE ("compute_prime_factors()")
 {
