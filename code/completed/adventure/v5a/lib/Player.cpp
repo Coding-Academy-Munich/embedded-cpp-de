@@ -7,17 +7,18 @@
 #include <memory>
 #include <stdexcept>
 
-namespace adventure::v5a {
+namespace adventure::v5a
+{
 
 Player::Player(const std::string& name, const Location& location)
-    : pawn {std::make_unique<Pawn>(name, location)}
+    : pawn{std::make_unique<Pawn>(name, location)}
 {
 }
 
 void Player::TakeTurn()
 {
-    auto actions {GetPossibleActions()};
-    auto action {SelectAction(actions)};
+    auto actions{GetPossibleActions()};
+    auto action{SelectAction(actions)};
     if (!action) {
         action = std::make_shared<SkipTurnAction>();
     }
@@ -26,7 +27,7 @@ void Player::TakeTurn()
 
 std::vector<ActionPtr> Player::GetPossibleActions() const
 {
-    std::vector<ActionPtr> result {};
+    std::vector<ActionPtr> result{};
     for (const auto& exit : GetLocation(*this).GetConnectedDirections()) {
         result.push_back(std::make_shared<MoveAction>(exit));
     }
@@ -55,10 +56,7 @@ void Player::PerformIfPossible(const Action& action)
     }
 }
 
-const Location& GetLocation(const Player& player)
-{
-    return player.GetPawn().GetLocation();
-}
+const Location& GetLocation(const Player& player) { return player.GetPawn().GetLocation(); }
 
 const std::string& GetName(const Player& player) { return player.GetPawn().GetName(); }
 

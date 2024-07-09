@@ -11,7 +11,8 @@
 #include <string>
 #include <vector>
 
-namespace adventure::v5b {
+namespace adventure::v5b
+{
 
 enum class PlayerStrategy {
     Interactive,
@@ -21,11 +22,13 @@ enum class PlayerStrategy {
     Helpful,
 };
 
-class Player {
+class Player
+{
 public:
-    explicit Player(const std::string& name, const Location& location,
-        PlayerStrategy strategy = PlayerStrategy::RandomAction,
-        unsigned long seed = 42L);
+    explicit Player(
+        const std::string& name, const Location& location,
+        PlayerStrategy strategy = PlayerStrategy::RandomAction, unsigned long seed = 42L
+    );
 
     void TakeTurn();
 
@@ -44,7 +47,7 @@ public:
 
 private:
     std::unique_ptr<Pawn> pawn;
-    PlayerStrategy strategy {};
+    PlayerStrategy strategy{};
     mutable std::default_random_engine randomEngine;
 };
 

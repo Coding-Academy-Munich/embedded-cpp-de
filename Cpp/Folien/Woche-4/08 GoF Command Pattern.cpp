@@ -178,14 +178,12 @@ public:
         command->Execute();
         history.push_back(std::move(command));
     }
-
     void AppendDocument()
     {
         auto command{std::make_unique<AppendCommand>(*doc_, "menu_app")};
         command->Execute();
         history.push_back(std::move(command));
     }
-
     void Undo()
     {
         if (history.empty())
@@ -213,14 +211,12 @@ public:
         save->Execute();
         history.push_back(std::move(save));
     }
-
     void AppendDocument()
     {
         auto save = std::make_unique<AppendCommand>(*doc_, "key_app");
         save->Execute();
         history.push_back(std::move(save));
     }
-
     void Undo()
     {
         if (history.empty())
@@ -490,7 +486,10 @@ std::cout << "  " << doc << '\n';
 struct StandingOrder
 {
     StandingOrder(double amount, std::string recipient, std::string frequency)
-        : amount{amount}, recipient{std::move(recipient)}, frequency{std::move(frequency)} {}
+        : amount{amount},
+          recipient{std::move(recipient)},
+          frequency{std::move(frequency)}
+    {}
     double amount;
     std::string recipient;
     std::string frequency;
@@ -552,7 +551,10 @@ public:
 
     double GetBalance() const { return balance_; }
     std::string GetAccountNumber() const { return account_number_; }
-    const std::vector<StandingOrder>& GetStandingOrders() const { return standing_orders_; }
+    const std::vector<StandingOrder>& GetStandingOrders() const
+    {
+        return standing_orders_;
+    }
 };
 
 // %%

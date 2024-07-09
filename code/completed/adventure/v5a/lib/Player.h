@@ -10,9 +10,11 @@
 #include <string>
 #include <vector>
 
-namespace adventure::v5a {
+namespace adventure::v5a
+{
 
-class Player {
+class Player
+{
 public:
     explicit Player(const std::string& name, const Location& location);
 

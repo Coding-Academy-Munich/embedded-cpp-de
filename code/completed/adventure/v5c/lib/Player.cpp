@@ -13,20 +13,23 @@
 #include <memory>
 #include <stdexcept>
 
-namespace adventure::v5c {
+namespace adventure::v5c
+{
 
-Player::Player(const std::string& name, const Location& location,
-    std::unique_ptr<SelectActionStrategy> strategy, unsigned long seed)
-    : pawn {std::make_unique<Pawn>(name, location)}
-    , strategy {std::move(strategy)}
-    , randomEngine {seed}
+Player::Player(
+    const std::string& name, const Location& location,
+    std::unique_ptr<SelectActionStrategy> strategy, unsigned long seed
+)
+    : pawn{std::make_unique<Pawn>(name, location)},
+      strategy{std::move(strategy)},
+      randomEngine{seed}
 {
 }
 
 void Player::TakeTurn()
 {
-    auto actions {GetPossibleActions()};
-    auto action {SelectAction(actions)};
+    auto actions{GetPossibleActions()};
+    auto action{SelectAction(actions)};
     if (!action) {
         action = std::make_shared<SkipTurnAction>();
     }
@@ -35,7 +38,7 @@ void Player::TakeTurn()
 
 std::vector<ActionPtr> Player::GetPossibleActions() const
 {
-    std::vector<ActionPtr> result {};
+    std::vector<ActionPtr> result{};
     for (const auto& exit : GetLocation(*this).GetConnectedDirections()) {
         result.push_back(std::make_shared<MoveAction>(exit));
     }
@@ -111,10 +114,7 @@ void Player::NoteActionImpossible(const Action& action, const std::exception& er
 
 void Player::NoteGameQuit() const { Notify("Game quit"); }
 
-const Location& GetLocation(const Player& player)
-{
-    return player.GetPawn().GetLocation();
-}
+const Location& GetLocation(const Player& player) { return player.GetPawn().GetLocation(); }
 
 const std::string& GetName(const Player& player) { return player.GetPawn().GetName(); }
 

@@ -15,7 +15,8 @@
 #include <string>
 #include <vector>
 
-namespace adventure::v5c {
+namespace adventure::v5c
+{
 
 enum class PlayerStrategyEnum {
     Interactive,
@@ -25,14 +26,17 @@ enum class PlayerStrategyEnum {
     Helpful,
 };
 
-class Player {
+class Player
+{
 public:
     using RandomEngineType = std::default_random_engine;
 
-    explicit Player(const std::string& name, const Location& location,
-        std::unique_ptr<SelectActionStrategy> strategy
-        = std::make_unique<SelectRandomAction>(),
-        unsigned long seed = 42L);
+    explicit Player(
+        const std::string& name, const Location& location,
+        std::unique_ptr<SelectActionStrategy> strategy =
+            std::make_unique<SelectRandomAction>(),
+        unsigned long seed = 42L
+    );
 
     void TakeTurn();
 
@@ -53,13 +57,13 @@ private:
     virtual void Notify(std::string_view msg) const;
     virtual void NotePossibleActions(const ActionVec& actions) const;
     virtual void NoteActionPerformed(const Action& action) const;
-    virtual void NoteActionImpossible(
-        const Action& action, const std::exception& err) const;
+    virtual void NoteActionImpossible(const Action& action, const std::exception& err)
+        const;
     void NoteGameQuit() const;
 
     std::unique_ptr<Pawn> pawn;
     std::unique_ptr<SelectActionStrategy> strategy;
-    std::unordered_set<std::shared_ptr<const PlayerObserver>> observers {};
+    std::unordered_set<std::shared_ptr<const PlayerObserver>> observers{};
     mutable std::default_random_engine randomEngine;
 };
 
@@ -71,8 +75,8 @@ void MoveToLocation(Player& player, const Location& newLocation);
 
 std::ostream& operator<<(std::ostream& os, const Player& player);
 
-std::unique_ptr<SelectActionStrategy> StrategyClassFor(
-    PlayerStrategyEnum playerStrategyEnum);
+std::unique_ptr<SelectActionStrategy> StrategyClassFor(PlayerStrategyEnum playerStrategyEnum
+);
 
 } // namespace adventure::v5c
 

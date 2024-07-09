@@ -13202,12 +13202,19 @@ ausführt</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=1ff2f8fc334a9e09">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=1ff2f8fc334a9e09">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-c++"><pre><span></span>
+<div class="highlight hl-c++"><pre><span></span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">ostream</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">ostream</span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"> </span><span class="o">::</span><span class="n">Document</span><span class="w"> </span><span class="n">doc</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">os</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">doc</span><span class="p">.</span><span class="n">GetState</span><span class="p">();</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">os</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -13231,18 +13238,18 @@ ausführt</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=be86437d699372a4">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=be86437d699372a4">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-c++"><pre><span></span>
+<div class="highlight hl-c++"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">commandCounter</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=9e5741c265d864ac">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=9e5741c265d864ac">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13278,7 +13285,7 @@ ausführt</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=7435f564e7bdc089">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=7435f564e7bdc089">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13325,7 +13332,7 @@ ausführt</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=b72d8dc97527eeec">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=7c5ab92b8df3dedd">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13341,14 +13348,12 @@ ausführt</li>
 <span class="w">        </span><span class="n">command</span><span class="o">-&gt;</span><span class="n">Execute</span><span class="p">();</span>
 <span class="w">        </span><span class="n">history</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">command</span><span class="p">));</span>
 <span class="w">    </span><span class="p">}</span>
-
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">AppendDocument</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">command</span><span class="p">{</span><span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">AppendCommand</span><span class="o">&gt;</span><span class="p">(</span><span class="o">*</span><span class="n">doc_</span><span class="p">,</span><span class="w"> </span><span class="s">"menu_app"</span><span class="p">)};</span>
 <span class="w">        </span><span class="n">command</span><span class="o">-&gt;</span><span class="n">Execute</span><span class="p">();</span>
 <span class="w">        </span><span class="n">history</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">command</span><span class="p">));</span>
 <span class="w">    </span><span class="p">}</span>
-
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">Undo</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">history</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
@@ -13368,7 +13373,7 @@ ausführt</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=c5bbc101ec6e770c">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=cb6557dc66f683d9">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13384,14 +13389,12 @@ ausführt</li>
 <span class="w">        </span><span class="n">save</span><span class="o">-&gt;</span><span class="n">Execute</span><span class="p">();</span>
 <span class="w">        </span><span class="n">history</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">save</span><span class="p">));</span>
 <span class="w">    </span><span class="p">}</span>
-
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">AppendDocument</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">save</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">AppendCommand</span><span class="o">&gt;</span><span class="p">(</span><span class="o">*</span><span class="n">doc_</span><span class="p">,</span><span class="w"> </span><span class="s">"key_app"</span><span class="p">);</span>
 <span class="w">        </span><span class="n">save</span><span class="o">-&gt;</span><span class="n">Execute</span><span class="p">();</span>
 <span class="w">        </span><span class="n">history</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">save</span><span class="p">));</span>
 <span class="w">    </span><span class="p">}</span>
-
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">Undo</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">history</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
@@ -13487,7 +13490,7 @@ ausführt</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=d1d752d402d5e6b2">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=d1d752d402d5e6b2">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13499,7 +13502,7 @@ ausführt</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=145e43d532e1bf69">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=a1688da154e71487">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13523,7 +13526,7 @@ ausführt</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=a9c518de4367d838">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=1092de28214d55c0">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13536,7 +13539,7 @@ ausführt</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=b68ed2d2a18ffd5e">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=2f4bf7f8f1cdf24f">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13548,7 +13551,7 @@ ausführt</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=16d32a7bb87029f9">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=5102724ba9379543">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13560,7 +13563,7 @@ ausführt</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=2bade453e9068d67">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=7eae8ccb305f94e6">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13780,7 +13783,7 @@ auf eine Memberfunktion speichert verwendet werden</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=753c34779af6c49a">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=4ef228eacb63b40f">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13792,7 +13795,7 @@ auf eine Memberfunktion speichert verwendet werden</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=aaa47019c3cc65f8">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=aaa47019c3cc65f8">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13804,7 +13807,7 @@ auf eine Memberfunktion speichert verwendet werden</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=11efa88db99ead52">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=cfa3b7530c26bfb4">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13816,7 +13819,7 @@ auf eine Memberfunktion speichert verwendet werden</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=9e4a5b7caa560411">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=b5e0e138885ed917">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13828,7 +13831,7 @@ auf eine Memberfunktion speichert verwendet werden</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=38022214ebd2e6d9">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=8c168ae5fa69dd18">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13840,7 +13843,7 @@ auf eine Memberfunktion speichert verwendet werden</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=e03975829f08c064">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=642a66fe69b6a776">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13852,7 +13855,7 @@ auf eine Memberfunktion speichert verwendet werden</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=6fc8d296f13fa0a0">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=7f1178d7192e65e3">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13903,7 +13906,7 @@ ermöglichen und eine Undo-Funktion für die letzte Transaktion bereitstellen.</
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=f4e4f8411704751e">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=39f3c7f5f942967e">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13911,7 +13914,10 @@ ermöglichen und eine Undo-Funktion für die letzte Transaktion bereitstellen.</
 <div class="highlight hl-c++"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">StandingOrder</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">StandingOrder</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">amount</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">recipient</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">frequency</span><span class="p">)</span>
-<span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">amount</span><span class="p">{</span><span class="n">amount</span><span class="p">},</span><span class="w"> </span><span class="n">recipient</span><span class="p">{</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">recipient</span><span class="p">)},</span><span class="w"> </span><span class="n">frequency</span><span class="p">{</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">frequency</span><span class="p">)}</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">amount</span><span class="p">{</span><span class="n">amount</span><span class="p">},</span>
+<span class="w">          </span><span class="n">recipient</span><span class="p">{</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">recipient</span><span class="p">)},</span>
+<span class="w">          </span><span class="n">frequency</span><span class="p">{</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">frequency</span><span class="p">)}</span>
+<span class="w">    </span><span class="p">{}</span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">amount</span><span class="p">;</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">recipient</span><span class="p">;</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">frequency</span><span class="p">;</span>
@@ -13921,7 +13927,7 @@ ermöglichen und eine Undo-Funktion für die letzte Transaktion bereitstellen.</
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=71c7cea183744637">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=12681d4922c4ad4d">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13981,7 +13987,10 @@ ermöglichen und eine Undo-Funktion für die letzte Transaktion bereitstellen.</
 
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">GetBalance</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">balance_</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">GetAccountNumber</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">account_number_</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">StandingOrder</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">GetStandingOrders</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">standing_orders_</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">StandingOrder</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">GetStandingOrders</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">standing_orders_</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">};</span>
 </pre></div>
 </div>
