@@ -5,14 +5,14 @@
 // -->
 //
 // <div style="text-align:center; font-size:200%;">
-//  <b>SOLID: Dependency-Inversions-Principle</b>
+//  <b>SOLID: Dependency-Inversions-Prinzip</b>
 // </div>
 // <br/>
 // <div style="text-align:center; font-size:120%;">Dr. Matthias Hölzl</div>
 // <br/>
 // <div style="text-align:center;">Coding-Akademie München</div>
 // <br/>
-// <!-- 12 SOLID Dependency-Inversions-Principle.cpp -->
+// <!-- 12 SOLID Dependency-Inversions-Prinzip.cpp -->
 // <!-- slides/module_500_solid_grasp/topic_400_solid_dip.cpp -->
 
 // %% [markdown]
@@ -45,14 +45,17 @@
 #include "Database.h"
 
 // %%
-class MyDomainClassV1 {
+class MyDomainClassV1
+{
 public:
-    void PerformWork(std::string data) {
+    void PerformWork(std::string data)
+    {
         data = "Processed: " + data;
         db.Execute("INSERT INTO my_table VALUES (?)", data);
     }
 
-    std::vector<std::string> RetrieveResult() {
+    std::vector<std::string> RetrieveResult()
+    {
         return db.Execute("SELECT * FROM my_table");
     }
 
@@ -62,7 +65,11 @@ private:
 
 // %%
 MyDomainClassV1 myDomainObjectV1{};
+
+// %%
 myDomainObjectV1.PerformWork("Hello World");
+
+// %%
 xcpp::display(myDomainObjectV1.RetrieveResult());
 
 // %% [markdown]
@@ -73,7 +80,6 @@ xcpp::display(myDomainObjectV1.RetrieveResult());
 //
 // <img src="img/db-example-01.svg"
 //      style="display:block;margin:auto;width:75%"/>
-
 
 // %% [markdown]
 //
@@ -94,29 +100,27 @@ xcpp::display(myDomainObjectV1.RetrieveResult());
 //
 // - Modul `MyModule.cpp`:
 //   - Keine Abhängigkeit mehr zu `Database.h`
-//   - Kombination aus Adapter und Strategy Pattern
+//   - Adapter Pattern
 
 // %%
-class AbstractDatabaseAdapter {
+class AbstractDatabaseAdapter
+{
 public:
     AbstractDatabaseAdapter() = default;
-    AbstractDatabaseAdapter(const AbstractDatabaseAdapter&) = delete;
-    AbstractDatabaseAdapter& operator=(const AbstractDatabaseAdapter&) = delete;
-    AbstractDatabaseAdapter(AbstractDatabaseAdapter&&) = delete;
-    AbstractDatabaseAdapter& operator=(AbstractDatabaseAdapter&&) = delete;
     virtual ~AbstractDatabaseAdapter() = default;
 
     virtual void SaveObject(std::string data) = 0;
     virtual std::vector<std::string> RetrieveData() = 0;
 };
 
-
 // %%
-class MyDomainClassV2 {
+class MyDomainClassV2
+{
 public:
     MyDomainClassV2(std::unique_ptr<AbstractDatabaseAdapter> db) : db_{std::move(db)} {}
 
-    void PerformWork(std::string data) {
+    void PerformWork(std::string data)
+    {
         data = "Processed: " + data;
         db_->SaveObject(data);
     }
@@ -137,13 +141,16 @@ private:
 #include "Database.h"
 
 // %%
-class ConcreteDatabaseAdapter : public AbstractDatabaseAdapter {
+class ConcreteDatabaseAdapter : public AbstractDatabaseAdapter
+{
 public:
-    void SaveObject(std::string data) override {
+    void SaveObject(std::string data) override
+    {
         db_.Execute("INSERT INTO my_table VALUES (?)", data);
     }
 
-    std::vector<std::string> RetrieveData() override {
+    std::vector<std::string> RetrieveData() override
+    {
         return db_.Execute("SELECT * FROM my_table");
     }
 
@@ -162,7 +169,11 @@ private:
 // %%
 auto dbAdapter{std::make_unique<ConcreteDatabaseAdapter>()};
 MyDomainClassV2 myDomainObjectV2{std::move(dbAdapter)};
+
+// %%
 myDomainObjectV2.PerformWork("Hello World");
+
+// %%
 xcpp::display(myDomainObjectV2.RetrieveResult());
 
 // %% [markdown]
@@ -231,10 +242,12 @@ xcpp::display(myDomainObjectV2.RetrieveResult());
 #include <vector>
 
 // %%
-class WeatherReport {
+class WeatherReport
+{
 public:
     WeatherReport(double temperature, double humidity)
-        : temperature_{temperature}, humidity_{humidity} {}
+        : temperature_{temperature}, humidity_{humidity}
+    {}
 
     double GetTemperature() const { return temperature_; }
     double GetHumidity() const { return humidity_; }
@@ -244,11 +257,12 @@ private:
     double humidity_;
 };
 
-
 // %%
-class LegacyWeatherServer {
+class LegacyWeatherServer
+{
 public:
-    WeatherReport GetWeatherReport() {
+    WeatherReport GetWeatherReport()
+    {
         static std::random_device rd;
         static std::mt19937 gen{rd()};
         static std::uniform_real_distribution<> dis{0.0, 1.0};
@@ -257,9 +271,11 @@ public:
 };
 
 // %%
-class NewWeatherServer {
+class NewWeatherServer
+{
 public:
-    std::tuple<double, double> FetchWeatherData() {
+    std::tuple<double, double> FetchWeatherData()
+    {
         static std::random_device rd;
         static std::mt19937 gen{rd()};
         static std::uniform_real_distribution<> dis{0.0, 1.0};
@@ -268,16 +284,22 @@ public:
 };
 
 // %%
-class WeatherReporter {
+class WeatherReporter
+{
 public:
     WeatherReporter(std::shared_ptr<LegacyWeatherServer> server)
-        : server{std::move(server)} {}
+        : server{std::move(server)}
+    {}
 
-    std::string Report() {
+    std::string Report()
+    {
         WeatherReport report{server->GetWeatherReport()};
-        if (report.GetTemperature() > 25.0f) {
+        if (report.GetTemperature() > 25.0f)
+        {
             return "It's hot";
-        } else {
+        }
+        else
+        {
             return "It's not hot";
         }
     }

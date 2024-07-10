@@ -31,12 +31,12 @@ std::vector<std::string> GenerateRandomVector() {
 class Database {
 public:
     std::vector<std::string> Execute(std::string sql) {
-        std::cout << "Executing SQL: " << sql << "\n";
+        std::cout << "Executing SQL: " << sql << std::endl;
         return GenerateRandomVector();
     }
 
     std::vector<std::string> Execute(std::string sql, std::string data) {
-        std::cout << "Executing SQL: " << sql << " with data " << data << "\n";
+        std::cout << "Executing SQL: " << sql << " with data " << data << std::endl;
         return GenerateRandomVector();
     }
 };
