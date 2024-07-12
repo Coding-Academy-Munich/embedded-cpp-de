@@ -6,7 +6,7 @@
 
 void set_up_level()
 {
-    GameEngineSingleton::create();
+
     GameEngine& engine(GameEngineSingleton::instance());
     engine.load_level();
     std::cout << "Setting up the game level\n";
@@ -14,7 +14,6 @@ void set_up_level()
 
 void set_up_characters()
 {
-    GameEngineSingleton::create();
     GameEngine& engine(GameEngineSingleton::instance());
     engine.load_characters();
     std::cout << "Setting up the game characters\n";
@@ -30,6 +29,8 @@ bool set_up_level_first()
 
 int main()
 {
+    GameEngineSingleton::create();
+
     if (set_up_level_first()) {
         set_up_level();
         set_up_characters();

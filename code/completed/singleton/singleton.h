@@ -82,7 +82,6 @@ class Singleton
 {
 private:
     Singleton() {}
-    // Delete copy and move operations...
 
 public:
     static Singleton& instance()
